@@ -30,8 +30,8 @@ public class PlayerMovementView : MonoBehaviour
             yield break;
         }
         
-        float parentWidth = parent.rect.width;
-        float targetWidth = parentWidth * size;
+        float minDimensity = Mathf.Min(parent.rect.width, parent.rect.height);
+        float targetWidth = minDimensity * size;
         float scale = targetWidth / circle.rectTransform.rect.width;
         transform.localScale = Vector3.one * scale * 2f;
     }

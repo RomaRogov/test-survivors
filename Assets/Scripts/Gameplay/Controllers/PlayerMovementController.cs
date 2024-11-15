@@ -37,8 +37,9 @@ public class PlayerMovementController : MonoBehaviour
         
         if (mouseClickPos.HasValue)
         {
+            float minScreenDimensity = Mathf.Min(Screen.width, Screen.height);
             joystickValue = Vector3.ClampMagnitude(
-                (Input.mousePosition - mouseClickPos.Value) / Screen.width / settings.joystickSensitivity, 1);
+                (Input.mousePosition - mouseClickPos.Value) / minScreenDimensity / settings.joystickSensitivity, 1);
             playerPos += joystickValue * (settings.playerSpeed * Time.deltaTime);
             foreach (var movementHandler in movementHandlers)
                 movementHandler.SetPosition(playerPos, joystickValue);
